@@ -1,14 +1,55 @@
+import { useUserStore } from '@/stores/user'
 import { createRouter, createWebHistory } from 'vue-router'
+import type { NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
+
+const checkAuth = (
+  from: RouteLocationNormalized,
+  to: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
+  const userStore = useUserStore()
+  if (!userStore.userId) {
+    next({ name: 'Auth' })
+  } else {
+    next()
+  }
+}
+
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/PageHome.vue'),
+    beforeEnter: checkAuth
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: () => import('@/views/PageAuth.vue')
+  },
+  {
+    path: '/list',
+    name: 'List',
+    component: () => import('@/views/PageList.vue'),
+    beforeEnter: checkAuth
+  },
+  {
+    path: '/interview/:id',
+    name: 'Interview',
+    component: () => import('@/views/PageInterview.vue'),
+    beforeEnter: checkAuth
+  },
+  {
+    path: '/statistic',
+    name: 'Statistic',
+    component: () => import('@/views/PageStatistic.vue'),
+    beforeEnter: checkAuth
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/HomeView.vue')
-    }
-  ]
+  routes: routes
 })
 
 export default router

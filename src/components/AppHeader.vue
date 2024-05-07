@@ -18,25 +18,25 @@ const items = ref<IMenuItem[]>([
     label: 'Anmeldung',
     icon: 'pi pi-user',
     path: '/auth',
-    show: computed(() => !userStore.userId)
+    show: computed((): boolean => !userStore.userId)
   },
   {
     label: 'Hinzufügen',
     icon: 'pi pi-plus',
     path: '/',
-    show: computed(() => !!userStore.userId)
+    show: computed((): boolean => !!userStore.userId)
   },
   {
     label: 'Liste der Interviews',
     icon: 'pi pi-list',
     path: '/list',
-    show: computed(() => !!userStore.userId)
+    show: computed((): boolean => !!userStore.userId)
   },
   {
     label: 'Statistiken',
     icon: 'pi pi-chart-pie',
     path: '/statistic',
-    show: computed(() => !!userStore.userId)
+    show: computed((): boolean => !!userStore.userId)
   }
 ])
 </script>
