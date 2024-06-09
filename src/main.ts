@@ -23,6 +23,8 @@ import ConfirmDialog from 'primevue/confirmdialog'
 import Calendar from 'primevue/calendar'
 import Textarea from 'primevue/textarea'
 import RadioButton from 'primevue/radiobutton'
+import Badge from 'primevue/badge'
+import Tooltip from 'primevue/tooltip'
 
 import App from './App.vue'
 import router from './router'
@@ -61,5 +63,7 @@ app.component('app-dialog', ConfirmDialog)
 app.component('app-calendar', Calendar)
 app.component('app-textarea', Textarea)
 app.component('app-radio-button', RadioButton)
+app.component('app-badge', Badge)
+app.directive('tooltip', Tooltip)
 
 app.mount('#app')
