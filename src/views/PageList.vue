@@ -65,7 +65,7 @@ onMounted(async () => {
       <app-column field="hrName" header="Name"></app-column>
       <app-column field="vacancyLink" header="Link">
         <template #body="slotProps">
-          <a :href="slotProps.data.vacancyLink" target="_blank">{{ slotProps.data.vacancyLink }}</a>
+          <a :href="slotProps.data.vacancyLink" target="_blank">Vacancy link</a>
         </template>
       </app-column>
       <app-column header="Contacts">
@@ -96,6 +96,36 @@ onMounted(async () => {
               <span class="contacts__icon pi pi-whatsapp"></span>
             </a>
           </div>
+        </template>
+      </app-column>
+      <app-column header="Steps">
+        <template #body="slotProps">
+          <span v-if="!slotProps.data.steps">Not filled in</span>
+          <div v-else class="interview-stages">
+            <app-badge
+              v-for="(step, i) in slotProps.data.steps"
+              :key="i"
+              :value="i + 1"
+              rounded
+              v-tooltip.top="step.name"
+            ></app-badge>
+          </div>
+        </template>
+      </app-column>
+      <app-column header="Salary fork">
+        <template #body="slotProps">
+          <span v-if="!slotProps.data.salaryFrom">Not avaible</span>
+          <span v-else>{{ slotProps.data.salaryFrom }} - {{ slotProps.data.salaryTo }}</span>
+        </template>
+      </app-column>
+      <app-column header="Result">
+        <template #body="slotProps">
+          <span v-if="!slotProps.data.result">Not filled in </span>
+          <template v-else>
+            <app-badge :severity="slotProps.data.result === 'Offer' ? 'success' : 'danger'">{{
+              slotProps.data.result
+            }}</app-badge>
+          </template>
         </template>
       </app-column>
       <app-column>
@@ -134,5 +164,9 @@ onMounted(async () => {
 }
 .contacts__icon {
   font-size: 20px;
+}
+.interview-stages {
+  display: flex;
+  gap: 5px;
 }
 </style>
