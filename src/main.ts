@@ -11,6 +11,7 @@ import PrimeVue from 'primevue/config'
 import Menubar from 'primevue/menubar'
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
+import InputNumber from 'primevue/inputnumber'
 import Toast from 'primevue/toast'
 import ToastService from 'primevue/toastservice'
 import ConfirmationService from 'primevue/confirmationservice'
@@ -19,6 +20,9 @@ import Card from 'primevue/card'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import ConfirmDialog from 'primevue/confirmdialog'
+import Calendar from 'primevue/calendar'
+import Textarea from 'primevue/textarea'
+import RadioButton from 'primevue/radiobutton'
 
 import App from './App.vue'
 import router from './router'
@@ -47,11 +51,15 @@ app.use(ConfirmationService)
 app.component('app-menubar', Menubar)
 app.component('app-button', Button)
 app.component('app-input-text', InputText)
+app.component('app-input-number', InputNumber)
 app.component('app-toast', Toast)
 app.component('app-progress-spinner', ProgressSpinner)
 app.component('app-card', Card)
 app.component('app-datatable', DataTable)
 app.component('app-column', Column)
 app.component('app-dialog', ConfirmDialog)
+app.component('app-calendar', Calendar)
+app.component('app-textarea', Textarea)
+app.component('app-radio-button', RadioButton)
 
 app.mount('#app')
