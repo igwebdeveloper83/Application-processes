@@ -7,7 +7,8 @@ import {
   orderBy,
   getDocs,
   deleteDoc,
-  doc
+  doc,
+  where
 } from 'firebase/firestore'
 import type { IInterview } from '@/interfaces'
 import { useUserStore } from '@/stores/user'
@@ -18,13 +19,31 @@ const userId = userStore.userId
 const db = getFirestore()
 const interviews = ref<IInterview[]>([])
 const isLoading = ref<boolean>(true)
+const selectedFilteredList = ref<string>('')
 
 const confirm = useConfirm()
 
-const getAllInterviews = async <T extends IInterview>() => {
-  const q = query(collection(db, 'users', userId, 'interviews'), orderBy('company', 'desc'))
+const getAllInterviews = async <T extends IInterview>(isFilter?: boolean) => {
+  let q
+  if (isFilter) {
+    q = query(
+      collection(db, 'users', userId, 'interviews'),
+      orderBy('createdAt', 'desc'),
+      where('result', '==', selectedFilteredList.value)
+    )
+  } else {
+    q = query(collection(db, 'users', userId, 'interviews'), orderBy('createdAt', 'desc'))
+  }
+
   const listDocs = await getDocs(q)
   return listDocs.docs.map((doc) => doc.data() as T)
+}
+
+const fetchAndSetInterviews = async (isFilter: boolean = false): Promise<void> => {
+  isLoading.value = true
+  const listInterview: Array<IInterview> = await getAllInterviews(isFilter)
+  interviews.value = listInterview
+  isLoading.value = false
 }
 
 const deleteInterview = async (id: string): Promise<void> => {
@@ -39,19 +58,23 @@ const deleteInterview = async (id: string): Promise<void> => {
     accept: async () => {
       isLoading.value = true
       await deleteDoc(doc(db, `users/${userId}/interviews`, id))
-
-      const listInterview: Array<IInterview> = await getAllInterviews()
-      interviews.value = [...listInterview]
-
-      isLoading.value = false
+      await fetchAndSetInterviews()
     }
   })
 }
 
+const selectedFilter = async (): Promise<void> => {
+  await fetchAndSetInterviews(true)
+}
+
+const clearFilter = async (): Promise<void> => {
+  selectedFilteredList.value = ''
+  await fetchAndSetInterviews()
+}
+
 onMounted(async () => {
-  const listInterview: Array<IInterview> = await getAllInterviews()
-  interviews.value = [...listInterview]
-  isLoading.value = false
+  selectedFilteredList.value = ''
+  await fetchAndSetInterviews()
 })
 </script>
 
@@ -60,6 +83,32 @@ onMounted(async () => {
   <app-progress-spinner v-if="isLoading" />
   <div v-else-if="interviews.length">
     <h1>Interviews liste</h1>
+    <div class="flex align-items-center mb-5">
+      <div class="flex align-items-center mr-2">
+        <app-radio-button
+          v-model="selectedFilteredList"
+          inputId="result1"
+          name="result"
+          value="Offer"
+        ></app-radio-button>
+        <label for="result1" class="ml-2">Offer</label>
+      </div>
+      <div class="flex align-items-center mr-2">
+        <app-radio-button
+          v-model="selectedFilteredList"
+          inputId="result2"
+          name="result"
+          value="Reject"
+        ></app-radio-button>
+        <label for="result2" class="ml-2">Refusal</label>
+      </div>
+      <app-button class="mr-2" @click="selectedFilter" :disabled="!selectedFilteredList"
+        >Select</app-button
+      >
+      <app-button severity="danger" @click="clearFilter" :disabled="!selectedFilteredList"
+        >Cancel</app-button
+      >
+    </div>
     <app-datatable :value="interviews" tableStyle="min-width: 50rem">
       <app-column field="company" header="Company"></app-column>
       <app-column field="hrName" header="Name"></app-column>
