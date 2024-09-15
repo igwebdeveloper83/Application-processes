@@ -146,7 +146,7 @@ onMounted(async () => {
               name="result"
               value="Reject"
             ></app-radio-button>
-            <label for="result1" class="ml-2">abgelehnt</label>
+            <label for="result1" class="ml-2">reject</label>
           </div>
           <div class="flex align-items-center">
             <app-radio-button

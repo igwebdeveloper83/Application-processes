@@ -82,7 +82,7 @@ onMounted(async () => {
   <app-dialog />
   <app-progress-spinner v-if="isLoading" />
   <div v-else-if="interviews.length">
-    <h1>Interviews liste</h1>
+    <h1>List of interview</h1>
     <div class="flex align-items-center mb-5">
       <div class="flex align-items-center mr-2">
         <app-radio-button
@@ -193,7 +193,7 @@ onMounted(async () => {
       </app-column>
     </app-datatable>
   </div>
-  <h3 v-else>Keine interviews</h3>
+  <h3 v-else>No interviews</h3>
 </template>
 
 <style scoped>
