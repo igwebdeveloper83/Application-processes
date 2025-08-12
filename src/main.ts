@@ -32,12 +32,12 @@ import router from './router'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyC89YnVjidBbd4l5WQ6iqY02SBnflUp5zc',
-  authDomain: 'interviews-f0b40.firebaseapp.com',
-  projectId: 'interviews-f0b40',
-  storageBucket: 'interviews-f0b40.appspot.com',
-  messagingSenderId: '670020396138',
-  appId: '1:670020396138:web:e185a8615b5f6070959613'
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 // Initialize Firebase

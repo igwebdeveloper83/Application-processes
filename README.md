@@ -59,3 +59,26 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Lizenzhinweise
+
+Dieses Projekt verwendet folgende Open-Source-Bibliotheken:
+
+- **Vue 3** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/vuejs/core/blob/main/LICENSE))
+
+- **Vue Router** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/vuejs/router/blob/main/LICENSE))
+
+- **Pinia** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/vuejs/pinia/blob/v2/LICENSE))
+
+- **PrimeVue**, **PrimeFlex**, **PrimeIcons** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/primefaces/primevue/blob/master/LICENSE.md))
+
+- **Chart.js** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md))
+
+- **Day.js** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/iamkun/dayjs/blob/dev/LICENSE))
+
+- **UUID** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/uuidjs/uuid/blob/main/LICENSE.md))
+
+- **Firebase** – Apache-2.0-Lizenz ([Lizenz anzeigen](https://github.com/firebase/firebase-js-sdk/blob/main/LICENSE))
+
+Alle genannten Bibliotheken dürfen gemäß ihren jeweiligen Lizenzen verwendet, verändert und weiterverteilt werden.  
+Der vollständige Lizenztext jeder Bibliothek ist über die obigen Links abrufbar.
