@@ -18,6 +18,18 @@ Dieses Projekt ist eine Webanwendung zur Verwaltung und Nachverfolgung von Bewer
 - **Firebase Firestore**: Cloud-basierte NoSQL-Datenbank für die Verwaltung und Speicherung der Interviewdaten.
 - **PrimeVue**: UI-Komponenten-Bibliothek für eine ansprechende und funktionale Benutzeroberfläche.
 
+# Tic Tac Toe
+
+Dieses Projekt enthält ein eingebautes **Tic Tac Toe**-Spiel.
+
+- Spielbar gegen einen anderen Menschen oder gegen den Computer.
+- Rückgängig-Funktion („Undo“) für den letzten Zug.
+- Neustart-Möglichkeit jederzeit.
+- Automatische Erkennung von Gewinnen, Niederlagen oder Unentschieden.
+- Optisch angepasstes Spielfeld mit PrimeVue Buttons und farbiger Markierung.
+
+Das Spiel ist vollständig in **Vue 3** umgesetzt und benötigt keine externe Backend-Anbindung.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
