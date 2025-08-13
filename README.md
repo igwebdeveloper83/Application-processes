@@ -72,6 +72,8 @@ Dieses Projekt verwendet folgende Open-Source-Bibliotheken:
 
 - **PrimeVue**, **PrimeFlex**, **PrimeIcons** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/primefaces/primevue/blob/master/LICENSE.md))
 
+- **Tailwind CSS** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE))
+
 - **Chart.js** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md))
 
 - **Day.js** – MIT-Lizenz ([Lizenz anzeigen](https://github.com/iamkun/dayjs/blob/dev/LICENSE))

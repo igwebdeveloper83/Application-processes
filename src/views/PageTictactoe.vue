@@ -5,11 +5,15 @@
 
       <div class="opponent-select">
         Gegner wählen:
-        <select v-model="opponent" @change="resetGame">
-          <option value="">Bitte wählen</option>
-          <option value="human">Mensch</option>
-          <option value="computer">Computer</option>
-        </select>
+        <Dropdown
+          v-model="opponent"
+          :options="opponents"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Bitte wählen"
+          @change="resetGame"
+          class="w-50 m-2"
+        />
       </div>
 
       <div class="error">{{ errorMessage }}</div>
@@ -41,6 +45,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Button from 'primevue/button'
+import Dropdown from 'primevue/dropdown'
 
 const opponent = ref('')
 const board = ref(Array(9).fill(''))
@@ -49,6 +54,11 @@ const gameOver = ref(false)
 const winner = ref('')
 const errorMessage = ref('')
 const history = ref([])
+
+const opponents = [
+  { label: 'Mensch', value: 'human' },
+  { label: 'Computer', value: 'computer' }
+]
 
 const wins = [
   [0, 1, 2],
@@ -173,7 +183,7 @@ function resetGame() {
 }
 
 .game-box {
-  min-height: 510px;
+  min-height: 560px;
   background-color: #001f4d;
   padding: 30px 40px;
   border-radius: 15px;
@@ -234,5 +244,9 @@ function resetGame() {
   justify-content: center;
   gap: 15px;
   margin-bottom: 10px;
+}
+
+.opponent-select .p-dropdown {
+  min-width: 150px;
 }
 </style>
